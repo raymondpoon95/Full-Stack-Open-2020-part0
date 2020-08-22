@@ -1,4 +1,4 @@
-title Single page app
+title New note
 
 browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
 server-->browser: HTML-code
@@ -17,4 +17,22 @@ server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
 
 note over browser:
 renders notes to display
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over browser:
+POST request to the server contains
+the new note as JSON-data containing 
+the content and deactivate
+end note
+
+server->browser: server repsponds with a 201 message note created and does not redirect
+
+note over browser:
+this is the response because The Content-Type 
+header of the request tells the server that 
+the included data is represented in the JSON format,
+without this header the server would not know how to parse 
+the data
 end note
